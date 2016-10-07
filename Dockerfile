@@ -65,11 +65,17 @@ WORKDIR /work
 ## Python Setup Tools
 RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
-# Install Sick Beard
-### RUN git clone git://github.com/midgetspy/Sick-Beard.git sickbeard
+## PIP
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python get-pip.py
 
-# Install Couch Potato
-### RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git couch-potato
+RUN pip install requests
+RUN pip install requests[security]
+RUN pip install requests-cache
+RUN pip install babelfish
+RUN pip install guessit<2
+RUN pip install subliminal<2
+RUN pip install qtfaststart
 
 ## MP4 Automator
 RUN git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git mp4_automator
