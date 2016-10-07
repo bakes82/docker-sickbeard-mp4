@@ -70,11 +70,11 @@ RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py
 
 RUN pip install requests
-RUN pip install requests[security]
+##RUN pip install requests[security]
 RUN pip install requests-cache
 RUN pip install babelfish
-RUN pip install guessit<2
-RUN pip install subliminal<2
+RUN pip install "guessit<2"
+RUN pip install "subliminal<2"
 RUN pip install qtfaststart
 
 ## MP4 Automator
@@ -85,8 +85,8 @@ COPY autoProcess.ini /work/mp4_automator/autoProcess.ini
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /work/supervisord.conf
 
-EXPOSE 8081
-EXPOSE 5050
+##EXPOSE 8081
+##EXPOSE 5050
 
 VOLUME ["/config", "/storage", "/incoming"]
 
