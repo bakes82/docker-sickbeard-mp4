@@ -102,6 +102,8 @@ RUN crontab -u root /etc/cron.d/mp4automator-cron
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
 
+RUN service cron start
+
 # Install Configs
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /work/supervisord.conf
