@@ -81,12 +81,28 @@ RUN pip install qtfaststart
 RUN git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git mp4_automator
 COPY autoProcess.ini /work/mp4_automator/autoProcess.ini
 
+COPY job.sh /work/
+
+# Add crontab file in the cron directory
+ADD crontab /etc/cron.d/mp4automator-cron
+
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/mp4automator-cron
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+#Install Cron
+RUN apt-get update
+RUN apt-get -y install cron
+
+# Run the command on container startup
+CMD cron && tail -f /var/log/cron.log
+
 # Install Configs
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /work/supervisord.conf
 
-##EXPOSE 8081
-##EXPOSE 5050
 
 VOLUME ["/config", "/storage", "/incoming"]
 
