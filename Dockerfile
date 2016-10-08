@@ -82,6 +82,7 @@ RUN git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git mp4_automat
 COPY autoProcess.ini /work/mp4_automator/autoProcess.ini
 
 COPY job.sh /work/
+RUN chmod 0777 /work/job.sh
 
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/mp4automator-cron
