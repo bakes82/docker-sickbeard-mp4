@@ -97,6 +97,8 @@ RUN touch /var/log/cron.log
 RUN apt-get update
 RUN apt-get -y install cron
 
+RUN crontab -u root /etc/cron.d/mp4automator-cron
+
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
 
