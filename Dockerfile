@@ -1,4 +1,4 @@
-FROM ubuntu:14.10
+FROM ubuntu:16.04
 #Based on the work of Eric Schultz <eric@startuperic.com>
 #Thanks to Tim Haak <tim@haak.co.uk>
 #ENV DEBIAN_FRONTEND noninteractive
@@ -19,7 +19,7 @@ RUN apt-get -qy upgrade
 RUN apt-get -qy install supervisor
 
 ## Dependencies
-RUN apt-get -qy install python3 wget git autoconf automake build-essential libass-dev libfreetype6-dev 
+RUN apt-get -qy install python wget git autoconf automake build-essential libass-dev libfreetype6-dev 
 RUN	apt-get -qy install libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev 
 RUN	apt-get -qy install libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev yasm libx264-dev 
 Run apt-get -qy install libmp3lame-dev libopus-dev unzip
